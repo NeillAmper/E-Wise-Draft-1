@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Wise! - Gamified E-Waste Challenge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <!-- Custom SVG Logo -->
+        <img src="logo.svg" alt="E-Wise Logo" class="logo">
+        <nav class="nav-links"><ul id="nav-ul"></ul></nav>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+    </header>
+
+    <main>
+        <div id="landing-page" class="page">
+            <div class="landing-container">
+                <div class="landing-text">
+                    <h1>Level Up Your <span>Eco-Knowledge</span></h1>
+                    <p>Play, learn, and compete in the ultimate e-waste awareness challenge. Turn your knowledge into action.</p>
+                    <a id="get-started-btn" class="btn btn-secondary">Join the Challenge</a>
+                </div>
+                <div class="landing-image">
+                    <img src="https://placehold.co/600x400/00A878/1E2D2B?text=E-Wise!" alt="E-Waste recycling concept">
+                </div>
+            </div>
+            <div class="features-section">
+                <div class="feature-card">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                    <h3>Learn & Discover</h3>
+                    <p>Explore our Eco-Library with articles and fun facts about e-waste.</p>
+                </div>
+                <div class="feature-card">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M21 6H3v12h18V6zm-2 10H5V8h14v8zM8 12h8v2H8v-2z"/></svg>
+                    <h3>Play & Challenge</h3>
+                    <p>Test your knowledge with gamified quizzes and climb the leaderboard.</p>
+                </div>
+                <div class="feature-card">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <h3>Take Action</h3>
+                    <p>Find local drop-off points and report illegal e-waste dumping.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login & Signup Pages -->
+        <div id="login-page" class="page">
+             <div class="form-container">
+                <form id="login-form">
+                    <h1>Login to Your Eco-Hub</h1>
+                    <div id="login-error" class="error-message"></div>
+                    <div class="form-group"><label for="login-username">Username</label><input type="text" id="login-username" placeholder="Enter your username" required></div>
+                    <div class="form-group"><label for="login-password">Password</label><input type="password" id="login-password" required></div>
+                    <div class="form-group"><button type="submit" class="btn btn-secondary">Login</button></div>
+                    <p style="text-align:center;">No account? <a id="signup-from-login">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+        <div id="signup-page" class="page">
+             <div class="form-container">
+                <form id="signup-form">
+                    <h1>Create Your Account</h1>
+                    <div id="signup-error" class="error-message"></div>
+                    <div class="form-group"><label for="signup-username">Username</label><input type="text" id="signup-username" placeholder="Choose a username" required></div>
+                    <div class="form-group"><label for="signup-password">Password</label><input type="password" id="signup-password" required></div>
+                    <div class="form-group"><label for="account-type">I am a:</label><select id="account-type"><option value="player">Player</option><option value="maker">Quiz Maker</option></select></div>
+                    <div class="form-group"><button type="submit" class="btn btn-secondary">Sign Up</button></div>
+                    <p style="text-align:center;">Have an account? <a id="login-from-signup">Login</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboards -->
+        <div id="maker-home" class="page">
+             <div class="dashboard-container">
+                <div class="dashboard-main card">
+                    <div class="card-header"><h2>Creation Lab</h2></div>
+                    <div id="maker-quiz-list"></div>
+                </div>
+                <div class="dashboard-aside">
+                    <div class="card">
+                        <div class="card-header"><h2>Actions</h2></div>
+                        <a href="#" class="btn btn-secondary" id="create-quiz-btn" style="width: 100%;">Create New Quiz</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="player-home" class="page">
+             <div class="dashboard-container">
+                <div class="dashboard-main">
+                    <div id="weekly-challenge-container"></div>
+                    <div class="card">
+                        <div class="card-header"><h2>Challenge Board</h2></div>
+                        <div id="player-quiz-list"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><h2>Social Feed</h2></div>
+                        <div id="social-feed-container"></div>
+                    </div>
+                </div>
+                <div class="dashboard-aside">
+                     <div class="card profile-card">
+                        <h2 id="dashboard-profile-name"></h2>
+                        <div id="player-level" class="player-level"></div>
+                        <div class="xp-bar-container"><div class="xp-bar" id="xp-bar"></div></div>
+                        <p class="xp-text"><span id="profile-xp"></span> / <span id="xp-next-level"></span> XP</p>
+                        <div class="profile-card-stats">
+                            <div class="profile-card-stat" id="eco-coins-display">
+                                <p>0</p>
+                                <span>Eco-Coins</span>
+                            </div>
+                            <div class="profile-card-stat" id="login-streak-display">
+                                <p>0</p>
+                                <span>Day Streak</span>
+                            </div>
+                        </div>
+                        <div id="profile-badges">
+                            <h3>Badges</h3>
+                            <div class="badges-container"></div>
+                        </div>
+                         <a href="#" class="btn btn-tertiary view-profile-btn">View Profile</a>
+                    </div>
+                    <div class="card fun-facts-card">
+                        <div class="card-header"><h2>Fun Fact</h2></div>
+                        <div>
+                            <span class="fact-icon">💡</span>
+                            <p id="fun-fact-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Play Page -->
+        <div id="quiz-play" class="page">
+            <div class="card" id="quiz-play-area" style="max-width: 900px; margin: 50px auto;">
+                <div class="quiz-progress-bar-container"><div class="quiz-progress-bar" id="quiz-progress-bar"></div></div>
+                <div class="question-header">
+                    <h2 id="quiz-title-display"></h2>
+                    <div id="question-timer">15</div>
+                </div>
+                <div id="question-container">
+                    <h3 id="question-text"></h3>
+                    <div id="options-container"></div>
+                    <p id="feedback-text"></p>
+                </div>
+                <div id="results-container" style="display: none;">
+                    <h2>Challenge Complete!</h2>
+                    <p id="dynamic-message"></p>
+                    <p style="font-size: 1.5rem; margin: 20px 0;">Your Score: <strong id="score-text"></strong></p>
+                    <p style="font-size: 1.2rem; margin: 10px 0; color: var(--xp-color);" id="xp-awarded-text"></p>
+                    <p style="font-size: 1.2rem; margin: 10px 0; color: var(--coin-color);" id="coins-awarded-text"></p>
+                    <div class="results-buttons">
+                        <a class="btn btn-tertiary" id="review-answers-btn">Review Answers</a>
+                        <a class="btn btn-secondary" id="back-to-dashboard-btn">Back to Eco-Hub</a>
+                    </div>
+                    <div class="rating-section" id="rating-section" style="display:none;">
+                        <h3>Rate this Quiz</h3>
+                        <div class="star-rating" id="star-rating">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <form id="comment-form" class="form-group">
+                            <textarea id="comment-input" rows="3" placeholder="Leave a comment..."></textarea>
+                            <button type="submit" class="btn btn-secondary" style="margin-top:10px;">Submit Feedback</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Review Page -->
+        <div id="review-page" class="page">
+            <div class="page-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 id="review-title"></h2>
+                        <a class="btn btn-tertiary back-to-dashboard-btn-new">Back to Eco-Hub</a>
+                    </div>
+                    <div id="review-container"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <div class="page-container">
+                <a class="btn btn-tertiary back-to-dashboard-btn-new" style="margin-bottom: 20px;">Back to Eco-Hub</a>
+                <div class="profile-page-container">
+                    <div class="profile-stats-card">
+                        <div class="card">
+                             <img src="" alt="Profile Picture" class="profile-picture" id="profile-page-picture">
+                             <h2 id="profile-page-name"></h2>
+                             <p id="profile-page-bio" class="profile-bio"></p>
+                             <div id="profile-page-level" class="player-level" style="font-size: 1.2rem;"></div>
+                             <a href="#" id="edit-profile-btn" class="btn btn-primary" style="margin-top: 1rem;">Edit Profile</a>
+                        </div>
+                        <div class="card">
+                            <div class="card-header"><h2>My Stats</h2></div>
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <h3 id="stat-quizzes-played">0</h3>
+                                    <p>Quizzes Played</p>
+                                </div>
+                                <div class="stat-item">
+                                    <h3 id="stat-average-score">0%</h3>
+                                    <p>Average Score</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-main-content">
+                        <div class="card">
+                            <div class="profile-tabs">
+                                <div class="profile-tab active" data-tab="achievements">Achievements</div>
+                                <div class="profile-tab" data-tab="friends">Friends</div>
+                                <div class="profile-tab" data-tab="settings">Settings</div>
+                            </div>
+                            <div id="tab-achievements" class="profile-tab-content active"></div>
+                            <div id="tab-friends" class="profile-tab-content">
+                                <form id="add-friend-form" class="form-group" style="display: flex; gap: 10px;">
+                                    <input type="text" id="add-friend-input" placeholder="Enter username to add">
+                                    <button type="submit" class="btn btn-secondary">Add</button>
+                                </form>
+                                <div id="friends-list"></div>
+                            </div>
+                            <div id="tab-settings" class="profile-tab-content">
+                                <form id="change-password-form">
+                                    <div class="form-group">
+                                        <label for="new-password">New Password</label>
+                                        <input type="password" id="new-password" placeholder="Enter new password">
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary">Update Password</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Page -->
+        <div id="leaderboard-page" class="page">
+            <div class="page-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Leaderboard</h2>
+                        <a class="btn btn-tertiary back-to-dashboard-btn-new">Back to Eco-Hub</a>
+                    </div>
+                    <div class="season-header">
+                        <h3>Season 1 Standings</h3>
+                        <p id="season-countdown"></p>
+                    </div>
+                    <ul class="leaderboard-list" id="leaderboard-list"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Page -->
+        <div id="events-page" class="page">
+            <div class="page-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Upcoming Events in Davao City</h2>
+                        <a class="btn btn-tertiary back-to-dashboard-btn-new">Back to Eco-Hub</a>
+                    </div>
+                    <div id="events-list"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learn More Page -->
+        <div id="learn-page" class="page">
+            <div class="page-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Eco-Library</h2>
+                        <a class="btn btn-tertiary back-to-dashboard-btn-new">Back to Eco-Hub</a>
+                    </div>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">What is E-Waste?</div>
+                            <div class="accordion-content">
+                                <div class="article-card">
+                                    <img src="https://placehold.co/200x200/00A878/1E2D2B?text=E-Waste" alt="E-waste pile">
+                                    <p>Electronic waste, or e-waste, describes discarded electrical or electronic devices. Used electronics which are destined for refurbishment, reuse, resale, salvage recycling through material recovery, or disposal are also considered e-waste. It is one of the fastest-growing waste streams in the world.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <div class="accordion-header">The Dangers of Improper Disposal</div>
+                            <div class="accordion-content">
+                                 <div class="article-card">
+                                     <img src="https://placehold.co/200x200/EF5350/F0F3F5?text=Danger" alt="Hazard symbol">
+                                     <p>E-waste contains toxic materials such as lead, mercury, cadmium, and beryllium. Improperly disposing of these items can cause these chemicals to leach into our soil and water, posing significant risks to human health and the environment.</p>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Map Page -->
+        <div id="map-page" class="page">
+             <div class="page-container">
+                <div class="card map-container">
+                    <div class="card-header">
+                         <h2>Find Drop-off Locations in Davao City</h2>
+                         <a class="btn btn-tertiary back-to-dashboard-btn-new">Back to Eco-Hub</a>
+                    </div>
+                     <img src="https://placehold.co/800x400/00C49A/1E2D2B?text=Simulated+Map+of+Davao+City" alt="Simulated Map of Davao City">
+                     <ul class="location-list">
+                         <li class="location-item"><strong>E-Cycle Philippines - SM Lanang</strong><p>J.P. Laurel Ave, Lanang, Davao City</p></li>
+                         <li class="location-item"><strong>GreenTech E-Waste - City Hall Annex</strong><p>Magallanes St, Poblacion District, Davao City</p></li>
+                         <li class="location-item"><strong>Davao City Environment Office (CENRO)</strong><p>Lingap Center, SPMC Compound, Bajada, Davao City</p></li>
+                     </ul>
+                     <a href="#" class="btn btn-primary" id="report-dumping-btn" style="margin-top: 20px;">Report Illegal Dumping</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resources Page -->
+        <div id="resources-page" class="page">
+            <div class="page-container">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Helpful Resources</h2>
+                        <a class="btn btn-tertiary back-to-dashboard-btn-new">Back to Eco-Hub</a>
+                    </div>
+                    <ul class="resource-list">
+                        <li><a href="https://www.denr.gov.ph/" target="_blank" class="resource-item">
+                            <h3>Department of Environment and Natural Resources (DENR)</h3>
+                            <p>The primary government agency responsible for the conservation, management, and development of the country's environment.</p>
+                        </a></li>
+                        <li><a href="https://www.earthday.org/" target="_blank" class="resource-item">
+                            <h3>Earth Day Network</h3>
+                            <p>A global organization working to diversify, educate and activate the environmental movement worldwide.</p>
+                        </a></li>
+                        <li><a href="https://www.greenpeace.org/philippines/" target="_blank" class="resource-item">
+                            <h3>Greenpeace Philippines</h3>
+                            <p>An independent organization campaigning to protect the environment and promote peace.</p>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <p>&copy; 2025 E-Wise! All rights reserved.</p>
+        <div class="footer-credits">
+            <p>A Green Day Project developed by:</p>
+            <p>Neill Laurence H. Amper | James Reino A. Allawan | Joshua B. Canja</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="quiz-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <form id="create-quiz-form">
+                <h1>Create New Quiz</h1>
+                <div class="form-group"><label for="quiz-title-input">Quiz Title</label><input type="text" id="quiz-title-input" required></div>
+                <div class="form-group"><label for="quiz-category-input">Category</label><input type="text" id="quiz-category-input" required></div>
+                <hr style="margin: 20px 0;">
+                <h3>Questions</h3>
+                <div id="new-question-container"></div>
+                <a href="#" class="btn btn-primary" id="add-question-btn" style="margin-top: 10px;">Add Another Question</a>
+                <div class="form-group" style="margin-top:20px;"><button type="submit" class="btn btn-secondary" style="width:100%">Save Quiz</button></div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="analytics-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="analytics-title"></h2>
+            <div id="analytics-content"></div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="report-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <form id="report-dumping-form">
+                 <h1>Report Illegal Dumping</h1>
+                 <p>Help keep our community clean. If you see improperly disposed e-waste, let us know.</p>
+                 <div class="form-group"><label for="report-location">Location Description</label><textarea id="report-location" rows="3" placeholder="e.g., Near the old bridge on 3rd St." required></textarea></div>
+                 <div class="form-group"><label for="report-image">Upload Photo (Optional)</label><input type="file" id="report-image"></div>
+                 <button type="submit" class="btn btn-secondary" style="width: 100%;">Submit Report</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="modal-overlay" id="edit-profile-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <form id="edit-profile-form">
+                 <h1>Edit Your Profile</h1>
+                 <div class="form-group">
+                    <label for="edit-name">Display Name</label>
+                    <input type="text" id="edit-name" placeholder="Your display name">
+                 </div>
+                 <div class="form-group">
+                    <label for="edit-picture">Profile Picture URL</label>
+                    <input type="text" id="edit-picture" placeholder="https://example.com/image.png">
+                 </div>
+                 <div class="form-group">
+                    <label for="edit-bio">Bio</label>
+                    <textarea id="edit-bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                 </div>
+                 <div class="form-group">
+                    <label for="edit-sex">Sex</label>
+                    <select id="edit-sex">
+                        <option value="Prefer not to say">Prefer not to say</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                 </div>
+                 <button type="submit" class="btn btn-secondary" style="width: 100%;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="notification-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
